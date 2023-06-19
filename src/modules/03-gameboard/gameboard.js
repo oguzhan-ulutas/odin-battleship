@@ -7,6 +7,18 @@ export default const Gameboard = ()=>{
     const cruiser = ShipFactory(3);
     const submarine = ShipFactory(3);
     const destroyer = ShipFactory(2);
+
+    // Creating ship coordinate object
+    let shipCoordinates ={
+        carrierCoor,
+        battleshipCoor,
+        cruiserCoor,
+        submarineCoor,
+        destroyerCoor 
+    }
+
+    const getShipCoor = ()=> shipCoordinates
+    return {getShipCoor}
 }
 
 // Create an instance for test purposes
