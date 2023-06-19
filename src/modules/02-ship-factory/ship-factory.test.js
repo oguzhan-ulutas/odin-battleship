@@ -6,16 +6,23 @@ test('is length between 0-5', () => {
 });
 
 test('is hitTime smaller than length', () => {
-  expect(testShip.hitTime).toBeLessThanOrEqual(testShip.length);
+  expect(testShip.getHitTimes()).toBeLessThanOrEqual(testShip.length);
 });
 
-test('is isSunk exist'()=>{
-  expect(testShip.isSunk).toBe(false)
-})
+test('is wracked exist', () => {
+  expect(testShip.getWracked()).toBe(false);
+});
 
-test("is hit function increase hitTime"()=>{
-  const hit = testShip.hitTime;
-  testShip.hit()
-  const hitAfter = testShip.hitTime
-  expect(hitAfter).toBe(hit+1)
-})
+test('is hit function increase the hitTimes', () => {
+  const hitTime = testShip.getHitTimes();
+  testShip.hit();
+
+  expect(testShip.getHitTimes()).toBe(hitTime + 1);
+});
+
+test('is wracked change, after hits', () => {
+  for (let i = 0; i < testShip.length; i++) {
+    testShip.hit();
+  }
+  expect(testShip.getWracked()).toBe(true);
+});
