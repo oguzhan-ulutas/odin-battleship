@@ -1,4 +1,4 @@
-const ShipFactory = (length) => {
+export default const ShipFactory = (length) => {
   let wracked = false;
   let hitTimes = 0;
 
@@ -24,8 +24,6 @@ const ShipFactory = (length) => {
   };
 };
 
+// Create an instance for test purposes
 const testShip = ShipFactory(4);
-console.log(testShip.getHitTimes());
-testShip.hit();
-console.log(testShip.getHitTimes());
 module.exports = testShip;
