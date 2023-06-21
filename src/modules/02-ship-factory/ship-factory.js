@@ -25,6 +25,7 @@ const ShipFactory = (length, shipType) => {
     getHitTimes,
     type,
     boardCoordinates,
+    sunk,
   };
 };
 
