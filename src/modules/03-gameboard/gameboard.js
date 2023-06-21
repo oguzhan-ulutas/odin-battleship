@@ -1,5 +1,4 @@
 import ShipFactory from '../02-ship-factory/ship-factory.js';
-// const ShipFactory = require('../02-ship-factory/ship-factory');
 
 const GameBoard = () => {
   // Creating ships object
@@ -33,7 +32,19 @@ const GameBoard = () => {
   };
 
   const getShipCoor = (ship) => ships[ship].boardCoordinates;
-  return { ships, shipPlacer, getShipCoor };
+  const shots = [];
+
+  const receiveAttack = (x, y) => {
+    const attackCoor = [x, y];
+    shots.push(attackCoor);
+  };
+  return {
+    ships,
+    shipPlacer,
+    getShipCoor,
+    shots,
+    receiveAttack,
+  };
 };
 
 export default GameBoard;
