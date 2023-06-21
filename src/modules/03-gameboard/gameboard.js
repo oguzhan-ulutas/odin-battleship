@@ -16,6 +16,7 @@ const GameBoard = () => {
     if (direction === 'horizontal') {
       if (x + length > 11) {
         console.log('Invalid, the ship is out of the board.');
+        return;
       }
       for (let i = 0; i < length; i++) {
         const coordinate = [x + i, y];
@@ -24,6 +25,7 @@ const GameBoard = () => {
     } else {
       if (y + length > 11) {
         console.log('Invalid, the ship is out of the board.');
+        return;
       }
       for (let i = 0; i < length; i++) {
         const coordinate = [x, y + i];
