@@ -37,6 +37,14 @@ const GameBoard = () => {
   const receiveAttack = (x, y) => {
     const attackCoor = [x, y];
     shots.push(attackCoor);
+
+    Object.keys(ships).forEach((key) => {
+      ships[key].boardCoordinates.forEach((element) => {
+        if (JSON.stringify(element) === JSON.stringify(attackCoor)) {
+          ships[key].hit();
+        }
+      });
+    });
   };
   return {
     ships,
@@ -51,5 +59,3 @@ export default GameBoard;
 
 // Create an instance for test purposes
 export const testGameBoard = GameBoard();
-testGameBoard.shipPlacer('carrier', 1, 2, testGameBoard.ships.carrier.length, 'horizontal');
-console.log(Array.isArray(testGameBoard.getShipCoor('carrier')));
