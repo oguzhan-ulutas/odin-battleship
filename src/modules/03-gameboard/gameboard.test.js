@@ -30,3 +30,9 @@ test('is shots array populated', () => {
   testGameBoard.receiveAttack(6, 7);
   expect(testGameBoard.shots).toEqual([[6, 7]]);
 });
+
+test('is recieveAttack call hit', () => {
+  testGameBoard.shipPlacer('submarine', 5, 7, testGameBoard.ships.submarine.length, 'vertical');
+  testGameBoard.receiveAttack(5, 8);
+  expect(testGameBoard.ships.submarine.getHitTimes()).toEqual(1);
+});

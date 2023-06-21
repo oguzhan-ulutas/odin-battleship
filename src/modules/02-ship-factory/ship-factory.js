@@ -1,6 +1,8 @@
-export default const ShipFactory = (length) => {
+const ShipFactory = (length, shipType) => {
   let wracked = false;
   let hitTimes = 0;
+  const type = shipType;
+  const boardCoordinates = [];
 
   const sunk = () => {
     wracked = true;
@@ -21,9 +23,12 @@ export default const ShipFactory = (length) => {
     hit,
     getWracked,
     getHitTimes,
+    type,
+    boardCoordinates,
   };
 };
 
 // Create an instance for test purposes
-const testShip = ShipFactory(4);
-module.exports = testShip;
+export const testShip = ShipFactory(4);
+
+export default ShipFactory;

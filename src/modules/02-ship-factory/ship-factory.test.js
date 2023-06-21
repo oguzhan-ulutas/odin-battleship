@@ -1,4 +1,4 @@
-const testShip = require('./ship-factory');
+import { testShip, ShipFactory } from './ship-factory';
 
 test('is length between 0-5', () => {
   expect(testShip.length).toBeGreaterThan(0);
