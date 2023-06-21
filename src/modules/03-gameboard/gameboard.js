@@ -1,26 +1,45 @@
-import ShipFactory from "../02-ship-factory/ship-factory";
+import ShipFactory from '../02-ship-factory/ship-factory.js';
+// const ShipFactory = require('../02-ship-factory/ship-factory');
 
-export default const Gameboard = ()=>{
-    // Creating ships
-    const carrier = ShipFactory(5);
-    const battleship = ShipFactory(4);
-    const cruiser = ShipFactory(3);
-    const submarine = ShipFactory(3);
-    const destroyer = ShipFactory(2);
+const GameBoard = () => {
+  // Creating ships object
+  const ships = {
+    carrier: ShipFactory(5, 'carrier'),
+    battleship: ShipFactory(4, 'battleship'),
+    cruiser: ShipFactory(3, 'cruiser'),
+    submarine: ShipFactory(3, 'submarine'),
+    destroyer: ShipFactory(2, 'destroyer'),
+  };
 
-    // Creating ship coordinate object
-    let shipCoordinates ={
-        carrierCoor,
-        battleshipCoor,
-        cruiserCoor,
-        submarineCoor,
-        destroyerCoor 
+  const shipPlacer = (ship, x, y, length, direction = 'horizontal') => {
+    const coordinates = [];
+    if (direction === 'horizontal') {
+      if (x + length > 11) {
+        console.log('Invalid, the ship is out of the board.');
+      }
+      for (let i = 0; i < length; i++) {
+        const coordinate = [x + i, y];
+        coordinates.push(coordinate);
+      }
+    } else {
+      if (y + length > 11) {
+        console.log('Invalid, the ship is out of the board.');
+      }
+      for (let i = 0; i < length; i++) {
+        const coordinate = [x, y + i];
+        coordinates.push(coordinate);
+      }
     }
+    ships[ship].boardCoordinates = coordinates;
+  };
 
-    const getShipCoor = ()=> shipCoordinates
-    return {getShipCoor}
-}
+  const getShipCoor = (ship) => ships[ship].boardCoordinates;
+  return { ships, shipPlacer, getShipCoor };
+};
+
+export default GameBoard;
 
 // Create an instance for test purposes
-const testGameboard = Gameboard()
-module.exports = testGameboard;
+export const testGameBoard = GameBoard();
+testGameBoard.shipPlacer('carrier', 1, 2, testGameBoard.ships.carrier.length, 'horizontal');
+console.log(Array.isArray(testGameBoard.getShipCoor('carrier')));
