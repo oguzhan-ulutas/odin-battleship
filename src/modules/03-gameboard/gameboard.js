@@ -13,20 +13,17 @@ const GameBoard = () => {
 
   const shipPlacer = (ship, x, y, length, direction = 'horizontal') => {
     const coordinates = [];
+    if (x + length > 11 || y + length > 11) {
+      console.log('Invalid, the ship is out of the board.');
+      return;
+    }
+
     if (direction === 'horizontal') {
-      if (x + length > 11) {
-        console.log('Invalid, the ship is out of the board.');
-        return;
-      }
       for (let i = 0; i < length; i++) {
         const coordinate = [x + i, y];
         coordinates.push(coordinate);
       }
     } else {
-      if (y + length > 11) {
-        console.log('Invalid, the ship is out of the board.');
-        return;
-      }
       for (let i = 0; i < length; i++) {
         const coordinate = [x, y + i];
         coordinates.push(coordinate);
