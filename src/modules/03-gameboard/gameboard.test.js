@@ -36,3 +36,11 @@ test('is recieveAttack call hit', () => {
   testGameBoard.receiveAttack(5, 8);
   expect(testGameBoard.ships.submarine.getHitTimes()).toEqual(1);
 });
+
+test('is ship sunk', () => {
+  testGameBoard.shipPlacer('submarine', 5, 7, testGameBoard.ships.submarine.length, 'vertical');
+  testGameBoard.receiveAttack(5, 7);
+  testGameBoard.receiveAttack(5, 8);
+  testGameBoard.receiveAttack(5, 9);
+  expect(testGameBoard.ships.submarine.getWracked()).toEqual(true);
+});
