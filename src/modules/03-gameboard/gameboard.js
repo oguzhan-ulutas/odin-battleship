@@ -10,6 +10,8 @@ const GameBoard = () => {
     destroyer: ShipFactory(2, 'destroyer'),
   };
 
+  const shipCoor = [];
+
   const shipPlacer = (ship, x, y, length, direction = 'horizontal') => {
     const coordinates = [];
     if (x + length > 11 || y + length > 11) {
@@ -21,11 +23,13 @@ const GameBoard = () => {
       for (let i = 0; i < length; i++) {
         const coordinate = [x + i, y];
         coordinates.push(coordinate);
+        shipCoor.push(coordinate);
       }
     } else {
       for (let i = 0; i < length; i++) {
         const coordinate = [x, y + i];
         coordinates.push(coordinate);
+        shipCoor.push(coordinate);
       }
     }
     ships[ship].boardCoordinates = coordinates;
@@ -51,7 +55,7 @@ const GameBoard = () => {
   const checkSunk = (shipType) => {
     if (ships[shipType].length === ships[shipType].getHitTimes()) {
       ships[shipType].sunk();
-      console.log(`${shipType} has benn sunk.`);
+      console.log(`${shipType} has been sunk.`);
     }
   };
   return {
@@ -60,6 +64,7 @@ const GameBoard = () => {
     getShipCoor,
     shots,
     receiveAttack,
+    shipCoor,
   };
 };
 
