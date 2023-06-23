@@ -1,7 +1,7 @@
 import { randomShipPlacer, computer } from './player';
 
 test('is all the ships placed', () => {
-  computer.randomShipPlacer();
+  randomShipPlacer(computer);
   expect(computer.ships.carrier.boardCoordinates).not.toHaveLength(0);
   expect(computer.ships.battleship.boardCoordinates).not.toHaveLength(0);
   expect(computer.ships.cruiser.boardCoordinates).not.toHaveLength(0);

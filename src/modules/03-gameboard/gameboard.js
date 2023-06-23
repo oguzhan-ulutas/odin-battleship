@@ -10,11 +10,13 @@ const GameBoard = () => {
     destroyer: ShipFactory(2, 'destroyer'),
   };
 
-  const shipCoor = [];
+  let shipCoor = [];
+  const getAllShipCoor = () => shipCoor;
+  const areAllItemsUnique = (list) => list.length === new Set(list).size;
 
   const shipPlacer = (ship, x, y, length, direction = 'horizontal') => {
     const coordinates = [];
-    if (x + length > 11 || y + length > 11) {
+    if (x + length > 10 || y + length > 10) {
       console.log('Invalid, the ship is out of the board.');
       return;
     }
@@ -23,16 +25,20 @@ const GameBoard = () => {
       for (let i = 0; i < length; i++) {
         const coordinate = [x + i, y];
         coordinates.push(coordinate);
-        shipCoor.push(coordinate);
       }
     } else {
       for (let i = 0; i < length; i++) {
         const coordinate = [x, y + i];
         coordinates.push(coordinate);
-        shipCoor.push(coordinate);
       }
     }
-    ships[ship].boardCoordinates = coordinates;
+    const concatenatedList = shipCoor.concat(coordinates);
+    if (areAllItemsUnique(concatenatedList)) {
+      ships[ship].boardCoordinates = coordinates;
+      shipCoor = concatenatedList;
+    } else {
+      console.log('Invalid, the ships are overlapping. Try another coordinate');
+    }
   };
 
   const getShipCoor = (ship) => ships[ship].boardCoordinates;
@@ -64,7 +70,7 @@ const GameBoard = () => {
     getShipCoor,
     shots,
     receiveAttack,
-    shipCoor,
+    getAllShipCoor,
   };
 };
 
