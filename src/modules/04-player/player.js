@@ -27,4 +27,14 @@ export function randomShipPlacer(player) {
   });
 }
 
+export function attack(attacker, x, y) {
+  if (attacker === computer) {
+    const x = randomNumber();
+    const y = randomNumber();
+    player.receiveAttack(x, y);
+  } else {
+    computer.receiveAttack(x, y);
+  }
+}
+
 console.log(computer);

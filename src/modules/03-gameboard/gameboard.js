@@ -46,6 +46,9 @@ const GameBoard = () => {
 
   const receiveAttack = (x, y) => {
     const attackCoor = [x, y];
+    if (shots.some((attackCoor) => attackCoor)) {
+      return;
+    }
     shots.push(attackCoor);
 
     Object.keys(ships).forEach((key) => {

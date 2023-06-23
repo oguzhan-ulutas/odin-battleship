@@ -82,6 +82,9 @@ export function addHref(element, href) {
 }
 
 // Logs the argument
-export function logger (arg)[
-    console.log(arg)
-]
+export function logger(arg) {
+  console.log(arg);
+}
+
+// Returns true if all element in an array are unique
+export function areAllItemsUnique = (list) => list.length === new Set(list).size;
