@@ -20,8 +20,8 @@ export function addContent(element, content) {
 }
 
 // Appends a child element to a parent
-export function appendElement(parent, ...childs) {
-  childs.forEach((child) => {
+export function appendElement(parent, ...children) {
+  children.forEach((child) => {
     parent.appendChild(child);
   });
 }
@@ -87,4 +87,4 @@ export function logger(arg) {
 }
 
 // Returns true if all element in an array are unique
-export function areAllItemsUnique = (list) => list.length === new Set(list).size;
+export const areAllItemsUnique = (list) => list.length === new Set(list).size;

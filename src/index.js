@@ -1,5 +1,4 @@
 import './style.css';
-import ShipFactory from './modules/02-ship-factory/ship-factory';
+import { mainPageCreator } from './modules/05-main-page-creator/main-page-creator.js';
 
-const log = ShipFactory(3);
-console.log(log);
+mainPageCreator();
