@@ -37,4 +37,5 @@ export function attack(attacker, x, y) {
   }
 }
 
-console.log(computer);
+// Placing computer ships:
+randomShipPlacer(computer);

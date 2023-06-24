@@ -62,6 +62,12 @@ div[class^='cell'] {
   width: 3rem;
   height: 3rem;
 }
+div[class^='cell']:hover {
+  background-color: var(--hover-color);
+}
+div[class^='cell']:active {
+  background-color: var(--active-color);
+}
 .ship-placer-container {
   display: flex;
   flex-direction: column;
@@ -78,6 +84,11 @@ div[class^='cell'] {
   border-radius: 1rem;
   height: 5rem;
   width: 20rem;
+}
+.ship-placer-random-all {
+  border: none;
+  border-radius: 1rem;
+  height: 3rem;
 }
 .ship-placer-container button:hover {
   background-color: var(--hover-color);
