@@ -16,7 +16,7 @@ addClass(header, 'header');
 addContent(header, 'BATTLESHIP');
 
 // Creating main container div
-const mainContainer = newElementCreator('div');
+export const mainContainer = newElementCreator('div');
 addClass(mainContainer, 'main-container');
 
 // Creating footer element

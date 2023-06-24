@@ -2,6 +2,8 @@
   font-size: 10px;
   margin: 0px;
   padding: 0px;
+  --hover-color: rgb(93, 168, 176);
+  --active-color: rgb(207, 91, 163);
 }
 
 body {
@@ -16,7 +18,7 @@ body {
   padding: 0px;
 
   display: grid;
-  grid-template-rows: 3rem 1fr 2rem;
+  grid-template-rows: 6rem 1fr 2rem;
 }
 
 .header {
@@ -29,4 +31,57 @@ body {
 .footer {
   text-align: center;
   font-weight: 600;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ship-placer-header {
+  font-size: 3rem;
+  font-weight: 700;
+}
+.ship-placer-info {
+  font-size: 2rem;
+  font-weight: 500;
+}
+.ship-placer-board {
+  display: grid;
+  grid-template-columns: 3rem 3rem 3rem 3rem 3rem 3rem 3rem 3rem 3rem 3rem;
+  grid-template-columns: 3rem 3rem 3rem 3rem 3rem 3rem 3rem 3rem 3rem 3rem;
+  row-gap: 0px;
+  column-gap: 2px;
+  border: solid 1px;
+  width: 32rem;
+  height: 32rem;
+}
+div[class^='cell'] {
+  border: solid 1px;
+  width: 3rem;
+  height: 3rem;
+}
+.ship-placer-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+.ship-placer-rotate {
+  border: none;
+  border-radius: 1rem;
+  height: 3rem;
+}
+.ship-placer-start {
+  border: none;
+  border-radius: 1rem;
+  height: 5rem;
+  width: 20rem;
+}
+.ship-placer-container button:hover {
+  background-color: var(--hover-color);
+}
+.ship-placer-container button:active {
+  background-color: var(--active-color);
 }
