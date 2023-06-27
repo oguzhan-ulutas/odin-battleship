@@ -1,5 +1,4 @@
 const ShipFactory = (length, shipType) => {
-  const name = shipType;
   let wracked = false;
   let hitTimes = 0;
   const type = shipType;
@@ -20,7 +19,6 @@ const ShipFactory = (length, shipType) => {
   const getWracked = () => wracked;
 
   return {
-    name,
     length,
     hit,
     getWracked,

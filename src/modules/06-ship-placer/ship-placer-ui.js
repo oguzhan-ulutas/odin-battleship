@@ -4,7 +4,6 @@ import {
   addClass,
   addContent,
   appendElement,
-  elementSelector,
 } from '../01-building-blocks/building-blocks.js';
 import { mainContainer } from '../05-main-page-creator/main-page-creator.js';
 
@@ -15,11 +14,11 @@ const header = newElementCreator('div');
 addClass(header, 'ship-placer-header');
 addContent(header, 'Welcome to Battleship');
 
-const info = newElementCreator('div');
+export const info = newElementCreator('div');
 addClass(info, 'ship-placer-info');
 addContent(info, 'Place your ship');
 
-const rotateButton = newElementCreator('button');
+export const rotateButton = newElementCreator('button');
 addClass(rotateButton, 'ship-placer-rotate');
 addContent(rotateButton, 'Rotate the ship');
 
@@ -27,11 +26,11 @@ const board = newElementCreator('div');
 addClass(board, 'ship-placer-board');
 
 function divCreator() {
-  for (let i = 0; i < 10; i++) {
-    for (let j = 9; j >= 0; j--) {
+  for (let i = 9; i >= 0; i--) {
+    for (let j = 0; j < 10; j++) {
       const cell = newElementCreator('div');
-      addClass(cell, `cell-${i}-${j}`);
-      board.prepend(cell);
+      addClass(cell, `cell-${j}-${i}`);
+      appendElement(board, cell);
     }
   }
 }

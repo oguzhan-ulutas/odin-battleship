@@ -16,13 +16,13 @@ const randomDirection = () => {
 // Place ships randomly
 export function randomShipPlacer(player) {
   const ships = Object.keys(player.ships);
-  ships.forEach((element) => {
-    while (player.ships[element].boardCoordinates.length === 0) {
+  ships.forEach((ship) => {
+    while (player.ships[ship].boardCoordinates.length === 0) {
       const x = randomNumber();
       const y = randomNumber();
       const direction = randomDirection();
-      const { length } = player.ships[element];
-      player.shipPlacer(element, x, y, length, direction);
+      const { length } = player.ships[ship];
+      player.shipPlacer(ship, x, y, length, direction);
     }
   });
 }

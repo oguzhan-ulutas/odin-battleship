@@ -12,33 +12,43 @@ const GameBoard = () => {
 
   let shipCoor = [];
   const getAllShipCoor = () => shipCoor;
-  const areAllItemsUnique = (list) => list.length === new Set(list).size;
+  const areAllItemsUnique = (coordinate) => {
+    for (let i = 0; i < shipCoor.length; i++) {
+      if (shipCoor[0].join() === coordinate.join()) {
+        return true;
+      }
+    }
+    return false;
+  };
 
   const shipPlacer = (ship, x, y, length, direction = 'horizontal') => {
     const coordinates = [];
-    if (x + length > 10 || y + length > 10) {
-      console.log('Invalid, the ship is out of the board.');
-      return;
-    }
 
     if (direction === 'horizontal') {
+      if (x + length > 10) {
+        return;
+      }
       for (let i = 0; i < length; i++) {
         const coordinate = [x + i, y];
+        if (areAllItemsUnique(coordinate)) {
+          return;
+        }
         coordinates.push(coordinate);
       }
     } else {
+      if (y + length > 10) {
+        return;
+      }
       for (let i = 0; i < length; i++) {
         const coordinate = [x, y + i];
+        if (areAllItemsUnique(coordinate)) {
+          return;
+        }
         coordinates.push(coordinate);
       }
     }
-    const concatenatedList = shipCoor.concat(coordinates);
-    if (areAllItemsUnique(concatenatedList)) {
-      ships[ship].boardCoordinates = coordinates;
-      shipCoor = concatenatedList;
-    } else {
-      console.log('Invalid, the ships are overlapping. Try another coordinate');
-    }
+    ships[ship].boardCoordinates = coordinates;
+    shipCoor = shipCoor.concat(coordinates);
   };
 
   const getShipCoor = (ship) => ships[ship].boardCoordinates;
