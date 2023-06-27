@@ -79,12 +79,6 @@ div[class^='cell']:active {
   border-radius: 1rem;
   height: 3rem;
 }
-.ship-placer-start {
-  border: none;
-  border-radius: 1rem;
-  height: 5rem;
-  width: 20rem;
-}
 .ship-placer-random-all {
   border: none;
   border-radius: 1rem;
@@ -94,5 +88,8 @@ div[class^='cell']:active {
   background-color: var(--hover-color);
 }
 .ship-placer-container button:active {
+  background-color: var(--active-color);
+}
+.has-ship {
   background-color: var(--active-color);
 }

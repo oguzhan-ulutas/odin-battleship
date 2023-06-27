@@ -40,11 +40,7 @@ export const randomPlacer = newElementCreator('button');
 addClass(randomPlacer, 'ship-placer-random-all');
 addContent(randomPlacer, 'Repalace all the ships randomly');
 
-const startButton = newElementCreator('button');
-addClass(startButton, 'ship-placer-start');
-addContent(startButton, 'Start Game');
-
-appendElement(container, header, info, rotateButton, board, randomPlacer, startButton);
+appendElement(container, header, info, rotateButton, board, randomPlacer);
 
 export default function shipPlacerBoard() {
   appendElement(mainContainer, container);

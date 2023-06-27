@@ -14,7 +14,7 @@ const GameBoard = () => {
   const getAllShipCoor = () => shipCoor;
   const areAllItemsUnique = (coordinate) => {
     for (let i = 0; i < shipCoor.length; i++) {
-      if (shipCoor[0].join() === coordinate.join()) {
+      if (shipCoor[i].join() === coordinate.join()) {
         return true;
       }
     }
@@ -84,6 +84,7 @@ const GameBoard = () => {
     shots,
     receiveAttack,
     getAllShipCoor,
+    areAllItemsUnique,
   };
 };
 

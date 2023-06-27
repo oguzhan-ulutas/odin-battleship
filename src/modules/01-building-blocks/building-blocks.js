@@ -87,4 +87,11 @@ export function logger(arg) {
 }
 
 // Returns true if all element in an array are unique
-export const areAllItemsUnique = (list) => list.length === new Set(list).size;
+export const areAllItemsUnique = (array) => array.length === new Set(array).size;
+
+// Removes all children of an element
+export function removeAllChildren(element) {
+  while (element.firstChild) {
+    element.removeChild(element.firstChild);
+  }
+}
