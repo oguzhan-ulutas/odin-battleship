@@ -7,6 +7,7 @@ import {
   removeAllChildren,
 } from '../01-building-blocks/building-blocks.js';
 import { mainContainer } from '../05-main-page-creator/main-page-creator.js';
+import gamePageUICreator from '../07-game-page/game-page-ui.js';
 
 // Informs player about the ship
 function shipInfo(ship) {
@@ -80,6 +81,7 @@ function areShipsPlaced() {
     player.getShipCoor('destroyer').length
   ) {
     removeAllChildren(mainContainer);
+    gamePageUICreator();
   }
 }
 
@@ -127,7 +129,6 @@ export default function playerShipPlacer() {
       placeShipToDom(player.getShipCoor(getShip()));
       shipChanger();
       shipInfo(getShip());
-      console.log(player.ships);
       areShipsPlaced();
     });
   });

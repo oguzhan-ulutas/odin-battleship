@@ -25,16 +25,21 @@ addContent(rotateButton, 'Rotate the ship');
 const board = newElementCreator('div');
 addClass(board, 'ship-placer-board');
 
-function divCreator() {
+export function divCreator(container, keyword) {
   for (let i = 9; i >= 0; i--) {
     for (let j = 0; j < 10; j++) {
       const cell = newElementCreator('div');
-      addClass(cell, `cell-${j}-${i}`);
-      appendElement(board, cell);
+      if (keyword) {
+        addClass(cell, `cell-${keyword}-${j}-${i}`);
+      } else {
+        addClass(cell, `cell-${j}-${i}`);
+      }
+
+      appendElement(container, cell);
     }
   }
 }
-divCreator();
+divCreator(board);
 
 export const randomPlacer = newElementCreator('button');
 addClass(randomPlacer, 'ship-placer-random-all');
