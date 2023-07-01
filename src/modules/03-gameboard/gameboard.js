@@ -1,6 +1,6 @@
 import ShipFactory from '../02-ship-factory/ship-factory.js';
 
-const GameBoard = () => {
+export const GameBoard = () => {
   // Creating ships object
   const ships = {
     carrier: ShipFactory(5, 'carrier'),
@@ -12,9 +12,10 @@ const GameBoard = () => {
 
   let shipCoor = [];
   const getAllShipCoor = () => shipCoor;
-  const areAllItemsUnique = (coordinate) => {
-    for (let i = 0; i < shipCoor.length; i++) {
-      if (shipCoor[i].join() === coordinate.join()) {
+
+  const arrayIncludes = (coordinate, array) => {
+    for (let i = 0; i < array.length; i++) {
+      if (array[i].join() === coordinate.join()) {
         return true;
       }
     }
@@ -30,7 +31,7 @@ const GameBoard = () => {
       }
       for (let i = 0; i < length; i++) {
         const coordinate = [x + i, y];
-        if (areAllItemsUnique(coordinate)) {
+        if (arrayIncludes(coordinate, shipCoor)) {
           return;
         }
         coordinates.push(coordinate);
@@ -41,7 +42,7 @@ const GameBoard = () => {
       }
       for (let i = 0; i < length; i++) {
         const coordinate = [x, y + i];
-        if (areAllItemsUnique(coordinate)) {
+        if (arrayIncludes(coordinate, shipCoor)) {
           return;
         }
         coordinates.push(coordinate);
@@ -53,20 +54,20 @@ const GameBoard = () => {
 
   const getShipCoor = (ship) => ships[ship].boardCoordinates;
   const shots = [];
+  const getShots = () => shots;
 
   const receiveAttack = (x, y) => {
     const attackCoor = [x, y];
-    if (shots.some((attackCoor) => attackCoor)) {
+    if (arrayIncludes(attackCoor, getShots())) {
       return;
     }
     shots.push(attackCoor);
 
     Object.keys(ships).forEach((key) => {
-      ships[key].boardCoordinates.forEach((element) => {
-        if (JSON.stringify(element) === JSON.stringify(attackCoor)) {
-          ships[key].hit();
-        }
-      });
+      if (arrayIncludes(attackCoor, ships[key].boardCoordinates)) {
+        ships[key].hit();
+      }
+
       checkSunk(key);
     });
   };
@@ -81,14 +82,14 @@ const GameBoard = () => {
     ships,
     shipPlacer,
     getShipCoor,
-    shots,
+    getShots,
     receiveAttack,
     getAllShipCoor,
-    areAllItemsUnique,
+    arrayIncludes,
   };
 };
 
-export default GameBoard;
+// export GameBoard;
 
 // Create an instance for test purposes
 export const testGameBoard = GameBoard();

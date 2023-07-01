@@ -8,6 +8,7 @@ import {
 } from '../01-building-blocks/building-blocks.js';
 import { mainContainer } from '../05-main-page-creator/main-page-creator.js';
 import gamePageUICreator from '../07-game-page/game-page-ui.js';
+import gamePageLogic from '../07-game-page/game-page-logic.js';
 
 // Informs player about the ship
 function shipInfo(ship) {
@@ -82,6 +83,7 @@ function areShipsPlaced() {
   ) {
     removeAllChildren(mainContainer);
     gamePageUICreator();
+    gamePageLogic();
   }
 }
 

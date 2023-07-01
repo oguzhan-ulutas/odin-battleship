@@ -1,4 +1,5 @@
-import GameBoard from '../03-gameboard/gameboard.js';
+import { arrayIncludes } from '../01-building-blocks/building-blocks.js';
+import { GameBoard } from '../03-gameboard/gameboard.js';
 
 export const player = GameBoard();
 export const computer = GameBoard();
@@ -27,12 +28,12 @@ export function randomShipPlacer(player) {
   });
 }
 
-export function attack(attacker, x, y) {
-  if (attacker === computer) {
-    const x = randomNumber();
-    const y = randomNumber();
-    player.receiveAttack(x, y);
-  } else {
-    computer.receiveAttack(x, y);
+export function computerAttack() {
+  let x = randomNumber();
+  let y = randomNumber();
+  while (arrayIncludes([x, y], player.getShots())) {
+    x = randomNumber();
+    y = randomNumber();
   }
+  player.receiveAttack(x, y);
 }

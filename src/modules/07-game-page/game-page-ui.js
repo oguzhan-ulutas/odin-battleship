@@ -8,8 +8,8 @@ import { mainContainer } from '../05-main-page-creator/main-page-creator.js';
 import { divCreator } from '../06-ship-placer/ship-placer-ui.js';
 import { player } from '../04-player/player.js';
 
-const playerBoard = newElementCreator('div');
-const computerBoard = newElementCreator('div');
+export const playerBoard = newElementCreator('div');
+export const computerBoard = newElementCreator('div');
 
 function placeShipToDom(array) {
   for (let i = 0; i < array.length; i++) {

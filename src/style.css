@@ -99,3 +99,7 @@ div[class^='cell']:active {
   justify-content: center;
   gap: 5rem;
 }
+
+.attacked {
+  background-color: var(--hover-color);
+}

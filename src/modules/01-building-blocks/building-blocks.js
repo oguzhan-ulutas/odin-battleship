@@ -95,3 +95,13 @@ export function removeAllChildren(element) {
     element.removeChild(element.firstChild);
   }
 }
+
+// Checks if all items are uniqe in an array
+export function arrayIncludes(coordinate, array) {
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].join() === coordinate.join()) {
+      return true;
+    }
+  }
+  return false;
+}
