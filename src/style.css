@@ -103,3 +103,6 @@ div[class^='cell']:active {
 .attacked {
   background-color: var(--hover-color);
 }
+.got-shot {
+  background-color: black;
+}

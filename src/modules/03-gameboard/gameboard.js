@@ -75,7 +75,6 @@ export const GameBoard = () => {
   const checkSunk = (shipType) => {
     if (ships[shipType].length === ships[shipType].getHitTimes()) {
       ships[shipType].sunk();
-      console.log(`${shipType} has been sunk.`);
     }
   };
   return {

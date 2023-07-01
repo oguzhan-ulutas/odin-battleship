@@ -23,9 +23,7 @@ function shipInfo(ship) {
 let direction = 'horizontal';
 function rotateShip() {
   rotateButton.addEventListener('click', () => {
-    console.log(direction);
     direction === 'horizontal' ? (direction = 'vertical') : (direction = 'horizontal');
-    console.log(direction);
   });
 }
 
@@ -35,7 +33,6 @@ let y;
 let ship = 'carrier';
 
 function shipChanger() {
-  console.log(player.ships.carrier.boardCoordinates.length);
   if (player.ships.carrier.boardCoordinates.length === 0) {
     return;
   }
@@ -53,9 +50,7 @@ function shipChanger() {
   }
   if (player.ships.destroyer.boardCoordinates.length === 0) {
     ship = 'destroyer';
-    return;
   }
-  console.log(ship);
 }
 
 const getDirection = () => direction;
